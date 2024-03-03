@@ -1,0 +1,141 @@
+._btn {
+    border: none !important;
+    background: none;
+    font-size: 17px;
+    margin: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    line-height: 1px !important;
+}
+
+.my-profile-edit {
+    position: absolute;
+    right: 15px;
+    font-size: 30px;
+    top: 15px;
+}
+
+/* Form CSS Start */
+.required::after {
+    content: "*";
+    color: red;
+    font-weight: bold;
+}
+
+.form-label {
+    text-transform: capitalize !important;
+}
+
+table thead tr th {
+    text-transform: capitalize;
+}
+/* Table End */
+
+/* Bootstrap Date Picker Start */
+.bDP {
+    position: relative !important;
+}
+
+.datepicker.dropdown-menu {
+    min-width: 220px !important;
+    top: 210px !important;
+    left: 50% !important;
+    right: 50% !important;
+    transform: translate(-50%, -50%) !important;
+}
+/* Bootstrap Date Picker End */
+
+/* Select2 */
+
+.select2-container {
+    width: 100% !important;
+}
+
+.form-group {
+    margin: 10px 0;
+}
+.table-bold td {
+    font-weight: bold;
+}
+
+/* Image Pewview CSS */
+#cropPicModal {
+    z-index: 9999;
+}
+
+.custom-file-upload {
+    display: block;
+    width: auto;
+    font-size: 16px;
+}
+
+.box {
+    display: block;
+    /* min-width: 300px; */
+    height: 245px;
+    margin: 10px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+    overflow: hidden;
+}
+
+.js--image-preview {
+    height: 200px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background-image: url('https://www.l-nutra.com/wp-content/uploads/2018/07/placeholder.png');
+    background-color: white;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.upload-options {
+    cursor: pointer;
+    position: relative;
+    height: 50px;
+    background-color: #fff;
+    cursor: pointer;
+    overflow: hidden;
+    text-align: center;
+    transition: background-color ease-in-out 150ms;
+}
+
+
+/* Custom Select 2 */
+
+/* .select2-container .select2-selection--single,
+.select2-container .select2-selection--multiple {
+    height: 38px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered,
+.select2-container--default .select2-selection--multiple .select2-selection__rendered {
+    line-height: 38px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow,
+.select2-container--default .select2-selection--multiple .select2-selection__arrow {
+    height: 38px !important;
+}
+
+html.dark-theme .select2-container--default .select2-selection--single,
+html.dark-theme .select2-container--default .select2-selection--multiple {
+    color: #fcfcfc !important;
+    background-color: #181818 !important;
+    border: 1px solid rgb(255 255 255 / 12%) !important;
+}
+
+html.light-theme .select2-container--default .select2-selection--single,
+html.light-theme .select2-container--default .select2-selection--multiple {
+    background-color: #fff !important;
+    border: 1px solid #aaa !important;
+    border-radius: 4px !important;
+} */
+/* #student_list {
+    min-height: 300px;
+} */
+

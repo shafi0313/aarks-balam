@@ -1,0 +1,48 @@
+label {
+    text-transform: capitalize;
+}
+.status_label {
+    margin-left: -28px;
+}
+#is_active_input {
+    margin-left: -26px;
+}
+/* Bootstrap Date Picker Start */
+.bDP {
+    position: relative !important;
+}
+
+.datepicker.dropdown-menu {
+    min-width: 220px !important;
+    top: 210px !important;
+    left: 50% !important;
+    right: 50% !important;
+    transform: translate(-50%, -50%) !important;
+}
+/* Bootstrap Date Picker End */
+
+/* Table Start */
+table thead tr th {
+    text-transform: capitalize;
+}
+/* Table End */
+
+.select2-container {
+    display: block !important;
+    width: 100% !important;
+}
+
+.icon-btn{
+    display: inline-block;
+    font-size: 20px;
+    line-height: 1;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+table .required::after {
+    content: "*";
+    color: red;
+    font-weight: bold;
+}
+
