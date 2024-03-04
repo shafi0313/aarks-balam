@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Frontend\PageController;
 use App\Http\Controllers\Admin\LockScreenController;
 
 /*
@@ -17,3 +18,9 @@ use App\Http\Controllers\Admin\LockScreenController;
 
 Route::get('login/locked', [LockScreenController::class,'locked'])->middleware('auth')->name('login.locked');
 Route::post('login/locked', [LockScreenController::class,'unlock'])->name('login.unlock');
+
+Route::controller(PageController::class)->group(function () {
+    Route::get('/', 'index')->name('index');
+    // Route::get('about', 'about')->name('frontend.about');
+    // Route::get('contact', 'contact')->name('frontend.contact');
+});
