@@ -12,6 +12,19 @@ class SubCategorySeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        $subCategories = [
+            [
+                'category_id' => 1,
+                'name'        => 'BSRM Rod',
+                'is_active'   => 1,
+                'created_at'  => now(),
+            ],
+            [
+                'category_id' => 1,
+                'name'        => 'AKS Rod',
+                'is_active'   => 1,
+                'created_at'  => now(),
+            ],
+        ];
     }
 }
