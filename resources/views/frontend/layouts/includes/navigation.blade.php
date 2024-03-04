@@ -35,6 +35,11 @@
         <i class="ri-close-fill align-middle"></i>
     </div>
 
+    @php
+        $categories = \App\Models\Category::with(['subCategories'])
+            ->where('is_active', 1)
+            ->get();
+    @endphp
     <!-- Sidebar -left -->
     <div class="h-100" id="leftside-menu-container" data-simplebar>
         <!--- Sidemenu -->
@@ -46,6 +51,57 @@
                     <span> Home </span>
                 </a>
             </li>
+
+            @foreach ($categories as $category)
+                <li class="side-nav-item">
+                    @if ($category->subCategories->count() > 0)
+                        <a data-bs-toggle="collapse" href="#sidebarCategory{{ $category->id }}" aria-expanded="false"
+                            aria-controls="sidebarCategory{{ $category->id }}" class="side-nav-link">
+                            <i class="ri-mail-fill"></i>
+                            <span> {{ $category->name }} </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                    @else
+                        <a href="" class="side-nav-link">
+                            <i class="ri-calendar-2-fill"></i>
+                            <span> {{ $category->name }} </span>
+                        </a>
+                    @endif
+
+                    <div class="collapse" id="sidebarCategory{{ $category->id }}">
+                        <ul class="side-nav-second-level">
+                            @foreach ($category->subCategories as $subCategory)
+                                <li>
+                                    <a href="#">{{ $subCategory->name }}</a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </li>
+            @endforeach
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             <li class="side-nav-item">
                 <a href="" class="side-nav-link">
