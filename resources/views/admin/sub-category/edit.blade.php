@@ -6,19 +6,17 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form onsubmit="ajaxStoreModal(event, this, 'editModal')"
-                action="{{ route('admin.categories.update', $category->id) }}" method="POST" enctype="multipart/form-data">
+                action="{{ route('admin.sub-categories.update', $category->id) }}" method="POST"
+                enctype="multipart/form-data">
                 @csrf @method('PUT')
                 <div class="modal-body">
                     @bind($category)
                         <div class="row gy-2">
                             <div class="col-md-6">
+                                <x-form-select name="category_id" label="Category *" :options="$categories" />
+                            </div>
+                            <div class="col-md-6">
                                 <x-form-input name="name" label="name *" />
-                            </div>
-                            <div class="col-md-6">
-                                <img src="{{ imagePath('category', $category->image) }}" alt="" width="200px">
-                            </div>
-                            <div class="col-md-6">
-                                <x-form-input type="file" name="image" label="image" />
                             </div>
                             <div class="col-md-4 form-check form-switch">
                                 <label for="is_active" class="form-label status_label d-block required">Status </label>

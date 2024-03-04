@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MyProfileController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\AdminUserController;
+use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Setting\AppDbBackupController;
 use App\Http\Controllers\Setting\Permission\RoleController;
 use App\Http\Controllers\Setting\Permission\PermissionController;
@@ -37,3 +38,6 @@ Route::resource('/my-profile', MyProfileController::class)->only(['index','edit'
 
 Route::resource('/categories', CategoryController::class)->except(['create','show']);
 Route::patch('/categories/is-active/{category}', [CategoryController::class, 'status'])->name('categories.is_active');
+
+Route::resource('/sub-categories', SubCategoryController::class)->except(['create','show']);
+Route::patch('/sub-categories/is-active/{category}', [SubCategoryController::class, 'status'])->name('sub_categories.is_active');

@@ -1,14 +1,14 @@
 @extends('admin.layouts.app')
-@section('title', 'Categories')
+@section('title', 'Sub Category')
 @section('content')
-    @include('admin.layouts.includes.breadcrumb', ['title' => ['', 'Categories', 'Index']])
+    @include('admin.layouts.includes.breadcrumb', ['title' => ['Categories', 'Sub Category', 'Index']])
 
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-between mb-2">
-                        <h4 class="card-title">List of Categories</h4>
+                        <h4 class="card-title">List of Sub Categories</h4>
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createModal">
                             <i class="fa-solid fa-plus"></i> Add New
                         </button>
@@ -25,7 +25,7 @@
         </div><!-- end col -->
     </div><!-- end row -->
 
-        @include('admin.category.create')
+        @include('admin.sub-category.create')
     @push('scripts')
         <script>
             $(function() {
@@ -37,7 +37,7 @@
                     // responsive: true,
                     scrollX: true,
                     scrollY: 400,
-                    ajax: "{{ route('admin.categories.index') }}",
+                    ajax: "{{ route('admin.sub-categories.index') }}",
                     columns: [{
                             data: 'DT_RowIndex',
                             name: 'DT_RowIndex',
@@ -48,14 +48,14 @@
                             orderable: false,
                         },
                         {
+                            data: 'category.name',
+                            name: 'category.name',
+                            title: 'category name'
+                        },
+                        {
                             data: 'name',
                             name: 'name',
                             title: 'name'
-                        },
-                        {
-                            data: 'image',
-                            name: 'image',
-                            title: 'image'
                         },
                         {
                             data: 'is_active',
