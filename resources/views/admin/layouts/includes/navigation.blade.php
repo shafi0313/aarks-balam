@@ -75,8 +75,24 @@
                 </div>
             </li>
 
-            {{-- settings --}}
             <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#categoryAdmin" aria-expanded="false" aria-controls="categoryAdmin"
+                    class="side-nav-link">
+                    <i class="fa-solid fa-user-shield"></i>
+                    <span> Categories </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="categoryAdmin">
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="{{ route('admin.categories.index') }}">Category</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            {{-- settings --}}
+            {{-- <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarSettings" aria-expanded="false" aria-controls="sidebarSettings"
                     class="side-nav-link">
                     <i class="fa-solid fa-gear"></i>
@@ -93,7 +109,7 @@
                         </li>
                     </ul>
                 </div>
-            </li>
+            </li> --}}
 
 
 

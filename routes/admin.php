@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MyProfileController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Setting\AppDbBackupController;
 use App\Http\Controllers\Setting\Permission\RoleController;
@@ -33,3 +34,6 @@ Route::resource('/admin-users', AdminUserController::class)->except(['show','cre
 Route::patch('/admin-users/is-active/{user}', [AdminUserController::class, 'status'])->name('admin_users.is_active');
 
 Route::resource('/my-profile', MyProfileController::class)->only(['index','edit']);
+
+Route::resource('/categories', CategoryController::class)->except(['create','show']);
+Route::patch('/categories/is-active/{category}', [CategoryController::class, 'status'])->name('categories.is_active');

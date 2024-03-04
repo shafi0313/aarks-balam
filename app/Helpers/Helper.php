@@ -103,8 +103,14 @@ if (!function_exists('imgWebpStore')) {
     function imgWebpStore($image, string $path, array $size = null)
     {
         $image = Image::make($image);
-        if (!is_null($size) && count($size) == 2) {
+        if ($size[0] && $size[1]) {
             $image->fit($size[0], $size[1]);
+        }
+
+        if ($size[0] && $size[1] == null) {
+            $image->resize($size[0], null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
         }
 
         $dir = public_path('/uploads/images/' . $path);
@@ -121,8 +127,14 @@ if (!function_exists('imgWebpUpdate')) {
     function imgWebpUpdate($image, string $path, array $size = null, $oldImage)
     {
         $image = Image::make($image);
-        if ($size[0] || $size[1]) {
+        if ($size[0] && $size[1]) {
             $image->fit($size[0], $size[1]);
+        }
+
+        if ($size[0] && $size[1] == null) {
+            $image->resize($size[0], null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
         }
 
         $dir = public_path('/uploads/images/' . $path);
