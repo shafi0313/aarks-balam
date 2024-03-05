@@ -57,13 +57,21 @@
                     @if ($category->subCategories->count() > 0)
                         <a data-bs-toggle="collapse" href="#sidebarCategory{{ $category->id }}" aria-expanded="false"
                             aria-controls="sidebarCategory{{ $category->id }}" class="side-nav-link">
-                            <i class="ri-mail-fill"></i>
+                            @if ($category->icon)
+                                {!! $category->icon !!}
+                            @else
+                                <img src="{{ imagePath('category', $category->image) }}" width="15px" alt="">
+                            @endif
                             <span> {{ $category->name }} </span>
                             <span class="menu-arrow"></span>
                         </a>
                     @else
                         <a href="" class="side-nav-link">
-                            <i class="ri-calendar-2-fill"></i>
+                            @if ($category->icon)
+                                {!! $category->icon !!}
+                            @else
+                                <img src="{{ imagePath('category', $category->image) }}" width="15px" alt="">
+                            @endif
                             <span> {{ $category->name }} </span>
                         </a>
                     @endif
@@ -103,14 +111,14 @@
 
 
 
-            <li class="side-nav-item">
+            {{-- <li class="side-nav-item">
                 <a href="" class="side-nav-link">
                     <i class="ri-calendar-2-fill"></i>
                     <span> Calendar </span>
                 </a>
-            </li>
+            </li> --}}
 
-            <li class="side-nav-item">
+            {{-- <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false" aria-controls="sidebarEmail"
                     class="side-nav-link">
                     <i class="ri-mail-fill"></i>
@@ -127,11 +135,11 @@
                         </li>
                     </ul>
                 </div>
-            </li>
+            </li> --}}
 
-            <li class="side-nav-title mt-2">Custom</li>
+            {{-- <li class="side-nav-title mt-2">Custom</li> --}}
 
-            <li class="side-nav-item">
+            {{-- <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarMultiLevel" aria-expanded="false"
                     aria-controls="sidebarMultiLevel" class="side-nav-link">
                     <i class="ri-share-fill"></i>
@@ -190,7 +198,7 @@
                         </li>
                     </ul>
                 </div>
-            </li>
+            </li> --}}
 
 
         </ul>

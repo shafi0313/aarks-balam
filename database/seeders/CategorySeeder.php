@@ -14,10 +14,26 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         $categories = [
-            ['name' => 'Rod & Steel', 'created_at' => now()],
-            ['name' => 'Cements', 'created_at' => now()],
-            ['name' => 'CI Sheet (Tin)', 'created_at' => now()],
-            ['name' => 'Sanitary', 'created_at' => now()],
+            [
+                'name' => 'Rod & Steel',
+                'image' => 'rod-steel.png',
+                'created_at' => now()
+            ],
+            [
+                'name' => 'Cements',
+                'image' => 'rod-steel.png',
+                'created_at' => now()
+            ],
+            [
+                'name' => 'CI Sheet (Tin)',
+                'image' => 'rod-steel.png',
+                'created_at' => now()
+            ],
+            [
+                'name' => 'Sanitary',
+                'image' => 'rod-steel.png',
+                'created_at' => now()
+            ],
         ];
 
         Category::insert($categories);
