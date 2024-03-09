@@ -59,7 +59,7 @@ class CategoryController extends Controller
     {
         $data = $request->validated();
         if ($request->hasFile('image')) {
-            $data['image'] = imgWebpStore($request->image, 'category', [20, null]);
+            $data['image'] = imgWebpStore($request->image, 'category', [150, null]);
         }
 
         try {
@@ -87,10 +87,10 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        $data = $category->validated();
+        $data = $request->validated();
         $image = $category->image;
         if ($request->hasFile('image')) {
-            $data['image'] = imgWebpUpdate($request->image, 'category', [20, null], $image);
+            $data['image'] = imgWebpUpdate($request->image, 'category', [150, null], $image);
         }
         try {
             $category->update($data);

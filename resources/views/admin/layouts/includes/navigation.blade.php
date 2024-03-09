@@ -36,8 +36,7 @@
         <div class="leftbar-user p-3 text-white">
             <a href="{{ route('admin.my-profile.index') }}" class="d-flex align-items-center text-reset">
                 <div class="flex-shrink-0">
-                    <img src="{{ profileImg() }}" alt="user-image" height="42"
-                        class="rounded-circle shadow">
+                    <img src="{{ profileImg() }}" alt="user-image" height="42" class="rounded-circle shadow">
                 </div>
                 <div class="flex-grow-1 ms-2">
                     <span class="fw-semibold fs-15 d-block">{{ user()->name }}</span>
@@ -73,6 +72,13 @@
                         </li>
                     </ul>
                 </div>
+            </li>
+
+            <li class="side-nav-item">
+                <a href="{{ route('admin.sliders.index') }}" class="side-nav-link">
+                    <i class="fa-solid fa-images"></i>
+                    <span> Slider </span>
+                </a>
             </li>
 
             <li class="side-nav-item">

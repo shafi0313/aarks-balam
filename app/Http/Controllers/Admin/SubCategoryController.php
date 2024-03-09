@@ -23,7 +23,6 @@ class SubCategoryController extends Controller
                 ->addIndexColumn()
                 ->addColumn('is_active', function ($row) {
                     return view('button', ['type' => 'is_active', 'route' => route('admin.sub_categories.is_active', $row->id), 'row' => $row->is_active]);
-
                 })
                 ->addColumn('action', function ($row) {
                     $btn = '';
@@ -70,7 +69,8 @@ class SubCategoryController extends Controller
     public function edit(Request $request, SubCategory $subCategory)
     {
         if ($request->ajax()) {
-            $modal = view('admin.sub-category.edit')->with(['subCategory' => $subCategory])->render();
+            $categories = Category::where('is_active', 1)->pluck('name', 'id')->prepend('Select Category', '')->toArray();
+            $modal = view('admin.sub-category.edit')->with(['subCategory' => $subCategory, 'categories' => $categories])->render();
             return response()->json(['modal' => $modal], 200);
         }
         return abort(500);

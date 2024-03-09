@@ -6,11 +6,11 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form onsubmit="ajaxStoreModal(event, this, 'editModal')"
-                action="{{ route('admin.sub-categories.update', $category->id) }}" method="POST"
+                action="{{ route('admin.sub-categories.update', $subCategory->id) }}" method="POST"
                 enctype="multipart/form-data">
                 @csrf @method('PUT')
                 <div class="modal-body">
-                    @bind($category)
+                    @bind($subCategory)
                         <div class="row gy-2">
                             <div class="col-md-6">
                                 <x-form-select name="category_id" label="Category *" :options="$categories" />
