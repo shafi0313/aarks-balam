@@ -100,6 +100,13 @@
                 </div>
             </li>
 
+            <li class="side-nav-item">
+                <a href="{{ route('admin.products.index') }}" class="side-nav-link">
+                    <i class="fa-solid fa-images"></i>
+                    <span> Product </span>
+                </a>
+            </li>
+
             {{-- settings --}}
             {{-- <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarSettings" aria-expanded="false" aria-controls="sidebarSettings"

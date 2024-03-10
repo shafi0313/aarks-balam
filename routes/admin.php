@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MyProfileController;
 use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\SubCategoryController;
@@ -45,3 +46,6 @@ Route::patch('/categories/is-active/{category}', [CategoryController::class, 'st
 
 Route::resource('/sub-categories', SubCategoryController::class)->except(['create','show']);
 Route::patch('/sub-categories/is-active/{category}', [SubCategoryController::class, 'status'])->name('sub_categories.is_active');
+
+Route::resource('/products', ProductController::class)->except(['create','show']);
+Route::patch('/products/is-active/{product}', [ProductController::class, 'status'])->name('products.is_active');
