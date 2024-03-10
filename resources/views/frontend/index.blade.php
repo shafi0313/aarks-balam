@@ -2,7 +2,6 @@
 @section('title', 'Dashboard')
 @section('content')
 
-
     <section class="">
         <div class="container">
             <div class="row">
@@ -13,6 +12,26 @@
                         </div>
                     @endforeach
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="category-area">
+        <div class="container">
+            <div class="row">
+                @foreach ($categories as $category)
+                    <div class="col-md-2">
+                        <a href="">
+                            <div class="card">
+                                <img src="{{ imagePath('category', $category->image) }}" class="card-img-top"
+                                    alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $category->name }}</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                @endforeach
             </div>
         </div>
     </section>
