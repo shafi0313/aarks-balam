@@ -14,6 +14,11 @@
     <!-- Daterangepicker css -->
     <link rel="stylesheet" href="{{ asset('backend/vendor/daterangepicker/daterangepicker.css') }}">
 
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+        integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <!-- Theme Config Js -->
     <script src="{{ asset('backend/js/config.js') }}"></script>
 
@@ -90,11 +95,15 @@
     {{-- Sweet alert --}}
     <script src="{{ asset('common/plugins/sweet-alert/sweetalert-2.min.js') }}"></script>
     {{-- Cute alert --}}
-    <link href="{{ asset('common/plugins/cute-alert/cute-alert.css') }}" rel="stylesheet" >
+    <link href="{{ asset('common/plugins/cute-alert/cute-alert.css') }}" rel="stylesheet">
     <script src="{{ asset('common/plugins/cute-alert/cute-alert.js') }}"></script>
     {{-- Select 2 --}}
     <link src="{{ asset('common/plugins/select2/css/select2.min.css') }}">
     <script src="{{ asset('common/plugins/select2/js/select2.min.js') }}"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+        integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script src="{{ asset('common/js/http.js') }}"></script>
     <script src="{{ asset('common/js/custom.js') }}"></script>

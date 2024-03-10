@@ -3,3 +3,76 @@
 .navbar-custom .topbar {
     background: #ff6700;
 }
+/* Slider Start */
+.hero img {
+    height: 500px;
+    object-fit: cover;
+}
+.owl-prev,
+.owl-next {
+    position: absolute;
+    height: 100px;
+    color: inherit;
+    background: none;
+    border: none;
+    z-index: 100;
+    top: 45%;
+}
+
+.owl-prev i,
+.owl-next i {
+    font-size: 60px;
+    color: #cecece;
+}
+
+.owl-prev {
+    left: 20px;
+}
+
+.owl-next {
+    right: 20px;
+}
+
+.owl-dots {
+    position: absolute;
+    text-align: center;
+    left: 50%;
+    bottom: 30px;
+}
+
+.owl-dots button.owl-dot {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    display: inline-block;
+    background: #ccc;
+    margin: 0 3px;
+}
+
+.owl-dots button.owl-dot.active {
+    background-color: #000;
+}
+
+.owl-dots button.owl-dot:focus {
+    outline: none;
+}
+
+.owl-nav button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.38) !important;
+}
+.owl-nav button:focus {
+    outline: none;
+}
+/*
+span {
+    font-size: 70px;
+    position: relative;
+    top: -5px;
+}
+
+ */
+
+/* Slider End */
