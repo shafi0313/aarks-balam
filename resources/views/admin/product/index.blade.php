@@ -24,7 +24,7 @@
             </div> <!-- end card -->
         </div><!-- end col -->
     </div><!-- end row -->
-        @include('admin.product.create')
+    @include('admin.product.create')
 
     @push('scripts')
         <script>
@@ -90,6 +90,26 @@
                     // fixedColumns: false,
                     scroller: {
                         loadingIndicator: true
+                    }
+                });
+            });
+            $('.category_id').on('change', function() {
+                var category_id = $(this).val();
+                $.ajax({
+                    url: "{{ route('admin.products.sub_categories') }}",
+                    type: "GET",
+                    data: {
+                        category_id: category_id
+                    },
+                    success: function(res) {
+                        let options = `<option value="">Select Sub Category</option>`;
+                        res.subCategories.forEach(element => {
+                            options += `<option value="${element.id}">${element.name}</option>`;
+                        });
+                        $('.sub_category').html(options);
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle the error here
                     }
                 });
             });

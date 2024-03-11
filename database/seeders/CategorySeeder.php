@@ -16,7 +16,7 @@ class CategorySeeder extends Seeder
         $categories = [
             [
                 'name' => 'Rod & Steel',
-                'image' => 'rod-steel.png',
+                'image' => 'category-50d5a090a9.webp',
                 'created_at' => now()
             ],
             [

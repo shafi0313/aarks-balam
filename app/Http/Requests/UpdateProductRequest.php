@@ -11,7 +11,7 @@ class UpdateProductRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,13 @@ class UpdateProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'category_id'     => ['required', 'exists:categories,id'],
+            'sub_category_id' => ['required', 'exists:sub_categories,id'],
+            'name'            => ['required', 'string', 'min:1', 'max:191'],
+            'price'           => ['nullable', 'numeric'],
+            'content'         => ['nullable', 'string', 'min:1'],
+            'image'           => ['nullable', 'image', 'mimes:jpeg,jpg,JPG,png,webp,svg'],
+            'is_active'       => ['nullable', 'boolean', 'in:0,1'],
         ];
     }
 }

@@ -49,3 +49,4 @@ Route::patch('/sub-categories/is-active/{category}', [SubCategoryController::cla
 
 Route::resource('/products', ProductController::class)->except(['create','show']);
 Route::patch('/products/is-active/{product}', [ProductController::class, 'status'])->name('products.is_active');
+Route::get('/get-sub-categories', [ProductController::class, 'getSubCategory'])->name('products.sub_categories');

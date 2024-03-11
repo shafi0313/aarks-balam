@@ -2,19 +2,34 @@
     <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="createModalLabel">Add Slider</h1>
+                <h1 class="modal-title fs-5" id="createModalLabel">Add Product</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form onsubmit="ajaxStoreModal(event, this, 'createModal')" action="{{ route('admin.sliders.store') }}"
+            <form onsubmit="ajaxStoreModal(event, this, 'createModal')" action="{{ route('admin.products.store') }}"
                 method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
                     <div class="row gy-2">
+                        <div class="col-md-6">
+                            <x-form-select name="category_id" :options="$categories" label="category *" class="category_id" />
+                        </div>
+                        <div class="col-md-6">
+                            <label for="" class="form-label">Sub Category</label>
+                            <select name="sub_category_id" class="form-select sub_category">
+                                <option value="">Select Category First</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <x-form-input name="name" label="name *" />
+                        </div>
+                        <div class="col-md-6">
+                            <x-form-input name="price" label="price" />
+                        </div>
                         <div class="col-md-12">
                             <x-form-textarea name="content" label="content" class="note_content" />
                         </div>
                         <div class="col-md-6">
-                            <x-form-input type="file" name="image" label="image * (Width: 1920 px, Height: 1080 px)" />
+                            <x-form-input type="file" name="image" label="image *" />
                         </div>
                         <div class="col-md-4 form-check form-switch">
                             <label for="is_active" class="form-label status_label d-block required">Status </label>

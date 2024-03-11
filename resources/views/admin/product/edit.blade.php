@@ -2,23 +2,23 @@
     <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="editModalLabel">Edit Slider</h1>
+                <h1 class="modal-title fs-5" id="editModalLabel">Edit Product</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form onsubmit="ajaxStoreModal(event, this, 'editModal')"
-                action="{{ route('admin.sliders.update', $slider->id) }}" method="POST" enctype="multipart/form-data">
+                action="{{ route('admin.products.update', $product->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf @method('PUT')
                 <div class="modal-body">
-                    @bind($slider)
+                    @bind($product)
                         <div class="row gy-2">
                             <div class="col-md-12">
                                 <x-form-textarea name="content" label="content" class="note_content" />
                             </div>
                             <div class="col-md-6">
-                                <img src="{{ imagePath('slider', $slider->image) }}" alt="" width="200px">
+                                <img src="{{ imagePath('product', $product->image) }}" alt="" width="200px">
                             </div>
                             <div class="col-md-6">
-                                <x-form-input type="file" name="image" label="image (Width: 1920 px, Height: 1080 px)" />
+                                <x-form-input type="file" name="image" label="image" />
                             </div>
                             <div class="col-md-4 form-check form-switch">
                                 <label for="is_active" class="form-label status_label d-block required">Status </label>

@@ -21,6 +21,7 @@ Route::post('login/locked', [LockScreenController::class,'unlock'])->name('login
 
 Route::controller(PageController::class)->group(function () {
     Route::get('/', 'index')->name('index');
+    Route::get('/product-show/{id}', 'productShow')->name('product_show');
     // Route::get('about', 'about')->name('frontend.about');
     // Route::get('contact', 'contact')->name('frontend.contact');
 });

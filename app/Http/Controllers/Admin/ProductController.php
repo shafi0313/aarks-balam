@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Product;
+use App\Models\Category;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use App\Http\Controllers\Controller;
@@ -39,7 +41,8 @@ class ProductController extends Controller
                 ->rawColumns(['content', 'image', 'is_active', 'action'])
                 ->make(true);
         }
-        return view('admin.product.index');
+        $categories = Category::where('is_active', 1)->pluck('name', 'id')->prepend('select category', '')->toArray();
+        return view('admin.product.index', compact('categories'));
     }
 
     function status(Product $product)
@@ -51,6 +54,12 @@ class ProductController extends Controller
         } catch (\Exception $e) {
             return response()->json(['message' => 'Oops something went wrong, Please try again.'], 500);
         }
+    }
+
+    public function getSubCategory(Request $request)
+    {
+        $subCategories = SubCategory::where('category_id', $request->category_id)->where('is_active', 1)->get();
+        return response()->json(['subCategories' => $subCategories], 200);
     }
 
     /**
