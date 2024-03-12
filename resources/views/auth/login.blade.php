@@ -10,7 +10,7 @@
         @csrf
         <div class="mb-3">
             <label for="emailaddress" class="form-label">Email address</label>
-            <input type="email" name="email" value="{{ old('username') ?: old('email') }}" class="form-control" id="emailaddress" required="" placeholder="Enter your email">
+            <input type="email" name="email" value="{{ old('username') ?? old('email') }}" class="form-control" id="emailaddress" required="" placeholder="Enter your email">
         </div>
 
         <div class="mb-3">

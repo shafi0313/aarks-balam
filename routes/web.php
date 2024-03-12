@@ -17,12 +17,13 @@ use App\Http\Controllers\Admin\LockScreenController;
 */
 
 
-Route::get('login/locked', [LockScreenController::class,'locked'])->middleware('auth')->name('login.locked');
-Route::post('login/locked', [LockScreenController::class,'unlock'])->name('login.unlock');
+Route::get('login/locked', [LockScreenController::class, 'locked'])->middleware('auth')->name('login.locked');
+Route::post('login/locked', [LockScreenController::class, 'unlock'])->name('login.unlock');
 
-Route::controller(AuthController::class)->group(function(){
+Route::controller(AuthController::class)->group(function () {
     Route::get('/sign-in', 'signIn')->name('sign_in');
     Route::post('/sign-in', 'signInProcess')->name('sign_in');
+    Route::get('/sign-up', 'signUp')->name('sign_up');
     Route::get('logout', 'logout')->name('logout');
 });
 

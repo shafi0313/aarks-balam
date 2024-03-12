@@ -10,14 +10,14 @@ use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
-    public function login()
+    public function signIn()
     {
-        return view('frontend.auth.login');
+        return view('frontend.sign-in');
     }
 
-    public function register()
+    public function signUp()
     {
-        return view('frontend.auth.register');
+        return view('frontend.sign-up');
     }
 
     public function store(Request $request)
