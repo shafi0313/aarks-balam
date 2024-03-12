@@ -30,4 +30,17 @@ class PageController extends Controller
     {
         return view('frontend.pages.contact');
     }
+
+    public function signIn()
+    {
+        return view('frontend.sign-in');
+    }
+    public function signInProcess()
+    {
+        
+    }
+    public function signUp()
+    {
+        return view('frontend.sing-up');
+    }
 }

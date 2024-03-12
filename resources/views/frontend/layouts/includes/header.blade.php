@@ -52,6 +52,9 @@
 
         <ul class="topbar-menu d-flex align-items-center gap-3">
             <li class="d-none d-md-inline-block me-md-2">
+                <a class="nav-link" href="{{ route('sign_in') }}">Sing In</a>
+            </li>
+            <li class="d-none d-md-inline-block me-md-2">
                 <a class="nav-link" href="" data-toggle="fullscreen">
                     <i class="ri-fullscreen-line fs-22"></i>
                 </a>

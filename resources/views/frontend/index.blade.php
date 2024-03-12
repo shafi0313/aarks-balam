@@ -18,6 +18,9 @@
 
     <section class="section category-area">
         <div class="container">
+            <div class="section-title">
+                <h2>Our Categories</h2>
+            </div>
             <div class="row">
                 @foreach ($categories as $category)
                     <div class="col-md-2">

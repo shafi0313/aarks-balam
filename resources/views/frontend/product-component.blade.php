@@ -4,7 +4,7 @@
             <img src="{{ imagePath('product', $product->image) }}" class="card-img-top" alt="{{ $product->name }}">
             <div class="card-body">
                 <h3 class="card-title">{{ $product->name }}</h3>
-                <h4 class="card-title">{{ $product->price }}</h4>
+                <h4 class="card-title"> &#2547; {{ $product->price }}</h4>
             </div>
         </a>
     </div>

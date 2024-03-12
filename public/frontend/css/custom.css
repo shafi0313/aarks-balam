@@ -2,6 +2,10 @@
 .navbar-custom .topbar {
     background: #ff6700;
 }
+
+.section {
+    padding: 60px 0;
+}
 .section-title {
     text-align: center;
 }
