@@ -38,6 +38,7 @@
             </div>
         </div>
     </section>
+    
     <section class="section products-area">
         <div class="container">
             <div class="section-title">
