@@ -1,5 +1,5 @@
 @extends('frontend.layouts.app')
-@section('title', 'Dashboard')
+@section('title', 'Home')
 @section('content')
 
     <section class="">
@@ -24,7 +24,7 @@
             <div class="row">
                 @foreach ($categories as $category)
                     <div class="col-md-2">
-                        <a href="">
+                        <a href="{{ route('sub_category', $category->id) }}">
                             <div class="card">
                                 <img src="{{ imagePath('category', $category->image) }}" class="card-img-top"
                                     alt="...">
@@ -38,7 +38,7 @@
             </div>
         </div>
     </section>
-    
+
     <section class="section products-area">
         <div class="container">
             <div class="section-title">

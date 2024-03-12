@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Models\Slider;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -21,6 +22,18 @@ class PageController extends Controller
         return view('frontend.index', $data);
     }
 
+    public function subCategory($catId)
+    {
+        $subCategories = SubCategory::whereCategoryId($catId)->get();
+        return view('frontend.sub-category', compact('subCategories'));
+    }
+
+    public function productBySubCategory($subCatId)
+    {
+        $products = Product::whereSubCategoryId($subCatId)->get();
+        return view('frontend.product-by-sub-category', compact('products'));
+    }
+
     public function about()
     {
         return view('frontend.pages.about');
@@ -29,18 +42,5 @@ class PageController extends Controller
     public function contact()
     {
         return view('frontend.pages.contact');
-    }
-
-    public function signIn()
-    {
-        return view('frontend.sign-in');
-    }
-    public function signInProcess()
-    {
-        
-    }
-    public function signUp()
-    {
-        return view('frontend.sing-up');
     }
 }
