@@ -66,7 +66,7 @@
                             <span class="menu-arrow"></span>
                         </a>
                     @else
-                        <a href="" class="side-nav-link">
+                        <a href="{{ route('product_by_category',$category->id) }}" class="side-nav-link">
                             @if ($category->icon)
                                 {!! $category->icon !!}
                             @else
@@ -80,7 +80,7 @@
                         <ul class="side-nav-second-level">
                             @foreach ($category->subCategories as $subCategory)
                                 <li>
-                                    <a href="#">{{ $subCategory->name }}</a>
+                                    <a href="{{ route('product_by_sub_category', $subCategory->id) }}">{{ $subCategory->name }}</a>
                                 </li>
                             @endforeach
                         </ul>

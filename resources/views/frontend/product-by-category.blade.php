@@ -5,7 +5,7 @@
     <section class="section category-area">
         <div class="container">
             <div class="section-title">
-                <h2> Products By Sub Category</h2>
+                <h2> Products By Category</h2>
             </div>
             <div class="row">
                 @foreach ($products as $product)

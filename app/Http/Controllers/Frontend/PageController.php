@@ -34,6 +34,12 @@ class PageController extends Controller
         return view('frontend.product-by-sub-category', compact('products'));
     }
 
+    public function productByCategory($catId)
+    {
+        $products = Product::whereCategoryId($catId)->get();
+        return view('frontend.product-by-category', compact('products'));
+    }
+
     public function about()
     {
         return view('frontend.pages.about');
