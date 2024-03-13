@@ -34,6 +34,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="{{ asset('backend/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
 
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <!-- Datatables css -->
     <link href="{{ asset('backend/vendor/datatables.net-bs5/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet"
         type="text/css" />
@@ -89,6 +90,8 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{{ asset('common/js/http.js') }}"></script>
     <script src="{{ asset('common/js/custom.js') }}"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <!-- Datatables js -->
     <script src="{{ asset('backend/vendor/datatables.net/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('backend/vendor/datatables.net-bs5/js/dataTables.bootstrap5.min.js') }}"></script>
@@ -96,8 +99,34 @@
     <script src="{{ asset('backend/vendor/daterangepicker/daterangepicker.js') }}"></script>
     <!-- App js -->
     <script src="{{ asset('backend/js/app.min.js') }}"></script>
+
+    @include('frontend.layouts.includes.cart_wishlist_js')
+    @include('frontend.layouts.includes.login-modal')
+    
     @stack('scripts')
     <div id="ajax_modal_container"></div>
+    <script>
+        function toast(status, header, msg) {
+            Command: toastr[status](header, msg);
+            toastr.options = {
+                closeButton: true,
+                debug: false,
+                newestOnTop: true,
+                progressBar: true,
+                positionClass: "toast-top-right",
+                preventDuplicates: true,
+                onclick: null,
+                showDuration: "300",
+                hideDuration: "1000",
+                timeOut: "2000",
+                extendedTimeOut: "1000",
+                showEasing: "swing",
+                hideEasing: "linear",
+                showMethod: "fadeIn",
+                hideMethod: "fadeOut",
+            };
+        }
+    </script>
 </body>
 
 </html>

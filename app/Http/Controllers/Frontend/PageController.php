@@ -28,6 +28,12 @@ class PageController extends Controller
         return view('frontend.sub-category', compact('subCategories'));
     }
 
+    public function product()
+    {
+        $products = Product::all();
+        return view('frontend.product-by-sub-category', compact('products'));
+    }
+
     public function productBySubCategory($subCatId)
     {
         $products = Product::whereSubCategoryId($subCatId)->get();

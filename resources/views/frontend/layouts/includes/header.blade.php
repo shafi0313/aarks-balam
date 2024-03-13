@@ -52,7 +52,22 @@
 
         <ul class="topbar-menu d-flex align-items-center gap-3">
             <li class="d-none d-md-inline-block me-md-2">
-                <a class="nav-link" href="{{ route('sign_in') }}">Sing In</a>
+                <div id="cartMenu">
+                    <a href="JavaScript:void(0)" class="btn btn-primary position-relative pr-cart">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            0
+                        </span>View Cart
+                    </a>
+                </div>
+            </li>
+            <li class="d-none d-md-inline-block me-md-2">
+                @auth
+                    <a class="nav-link" href="{{ route('sign_out') }}">Sing Out</a>
+                @endauth
+                @guest
+                    <a class="nav-link" href="{{ route('sign_in') }}">Sing In</a>
+                @endguest
             </li>
             <li class="d-none d-md-inline-block me-md-2">
                 <a class="nav-link" href="" data-toggle="fullscreen">

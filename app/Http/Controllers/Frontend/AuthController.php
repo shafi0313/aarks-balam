@@ -51,10 +51,10 @@ class AuthController extends Controller
         }
     }
 
-    public function logout()
+    public function signOut()
     {
         Session::flush();
         Auth::logout();
-        return redirect()->route('frontend.index');
+        return redirect()->route('index');
     }
 }

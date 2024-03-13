@@ -24,12 +24,13 @@ Route::controller(AuthController::class)->group(function () {
     Route::get('/sign-in', 'signIn')->name('sign_in');
     Route::post('/sign-in', 'store')->name('sign_in');
     Route::get('/sign-up', 'signUp')->name('sign_up');
-    Route::get('logout', 'logout')->name('logout');
+    Route::get('sign-out', 'signOut')->name('sign_out');
 });
 
 Route::controller(PageController::class)->group(function () {
     Route::get('/', 'index')->name('index');
     Route::get('/sub-category/{cat_id}', 'subCategory')->name('sub_category');
+    Route::get('/product', 'product')->name('products');
     Route::get('/product-by-category/{cat_id}', 'productByCategory')->name('product_by_category');
     Route::get('/product-by-sub-category/{sub_cat_id}', 'productBySubCategory')->name('product_by_sub_category');
     Route::get('/product-show/{id}', 'productShow')->name('product_show');
