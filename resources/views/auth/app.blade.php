@@ -58,23 +58,7 @@
             <div class="row justify-content-center">
                 <div class="col-xxl-4 col-lg-5">
                     <div class="card">
-
-                        <!-- Logo -->
-                        <div class="card-header pt-4 text-center">
-                            <div class="auth-brand mb-0">
-                                <a href="{{ route('admin.dashboard') }}" class="logo-dark">
-                                    <span><img src="{{ asset('backend/images/logo-dark.png') }}" alt="dark logo"
-                                            height="28"></span>
-                                </a>
-                                <a href="{{ route('admin.dashboard') }}" class="logo-light">
-                                    <span><img src="{{ asset('backend/images/logo.png') }}" alt="logo"
-                                            height="28"></span>
-                                </a>
-                            </div>
-                        </div>
-
                         <div class="card-body p-4">
-
                             @yield('content')
                         </div> <!-- end card-body -->
                     </div>
