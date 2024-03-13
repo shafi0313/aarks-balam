@@ -10,7 +10,7 @@ class LoginResponse implements LoginResponseContract
 
     public function toResponse($request)
     {
-        if(user()->role == 1 || user()->role == 2){
+        if(user()->role == 1){
             return redirect()->route('admin.dashboard');
         }else{
             return redirect()->route('index');

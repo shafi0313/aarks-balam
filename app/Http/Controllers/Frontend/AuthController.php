@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AuthController extends Controller
 {
@@ -23,34 +24,30 @@ class AuthController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'name'      => ['required', 'string', 'min:4', 'max:80'],
-            'user_name' => ['required', 'string', 'min:4', 'max:80'],
-            'password'  => ['required', 'string', 'min:6', 'confirmed'],
+            'name'     => ['required', 'string', 'min:4', 'max:80'],
+            'email'    => ['required', 'string', 'min:4', 'max:80'],
+            'password' => ['required', 'string', 'min:6'],
         ]);
 
-        if (filter_var($request->user_name, FILTER_VALIDATE_EMAIL)) {
-            if(User::where('email', $request->user_name)->first()){
-                return response()->json(['message' => 'This email address already used'], 500);
+        if (filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
+            if (User::where('email', $request->email)->first()) {
+                Alert::error('Error', 'This email address already used');
+                return back();
             }
-            $data['email'] = $request->user_name;
-            $data['phone'] = mt_rand(1, 10000000);
-        } else {
-            if(User::where('phone', $request->user_name)->first()){
-                return response()->json(['message' => 'This phone number already used'], 500);
-            }
-            $data['phone'] = $request->user_name;
-            $data['email'] = mt_rand(1, 10000000);
+            $data['email'] = $request->email;
+            $data['phone'] = $request->phone;
         }
-
         $data['role']         = 2;
-        // $data['is_deletable'] = 1;
         $data['password']     = bcrypt($request->password);
 
         try {
             User::create($data);
-            return response()->json(['message' => 'Registration Success, Now Login'], 200);
+            Alert::success('Success', 'User created successfully');
+            return back();
         } catch (\Exception $e) {
-            return response()->json(['message' => $e->getMessage()], 500);
+            return $e->getMessage();
+            Alert::error('Error', 'Something went wrong, please try again');
+            return back();
         }
     }
 

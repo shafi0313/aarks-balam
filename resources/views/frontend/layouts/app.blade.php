@@ -37,61 +37,45 @@
     <!-- Datatables css -->
     <link href="{{ asset('backend/vendor/datatables.net-bs5/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet"
         type="text/css" />
-
-
 </head>
 
 <body>
     <!-- Begin page -->
     <div class="wrapper">
-
-
         <!-- ========== Topbar Start ========== -->
         @include('frontend.layouts.includes.header')
         <!-- ========== Topbar End ========== -->
-
         <!-- ========== Left Sidebar Start ========== -->
         @include('frontend.layouts.includes.navigation')
         <!-- ========== Left Sidebar End ========== -->
-
         <!-- ============================================================== -->
         <!-- Start Page Content here -->
         <!-- ============================================================== -->
-
         <div class="content-page">
             <div class="content">
-
                 <!-- Start Content-->
                 <div class="container-fluid">
-
                     @yield('content')
-
                 </div>
                 <!-- container -->
-
             </div>
             <!-- content -->
-
             <!-- Footer Start -->
             @include('frontend.layouts.includes.footer')
             <!-- end Footer -->
-
         </div>
-
         <!-- ============================================================== -->
         <!-- End Page content -->
         <!-- ============================================================== -->
-
     </div>
     <!-- END wrapper -->
-
+    @include('sweetalert::alert')
     <!-- Theme Settings -->
     @include('frontend.layouts.includes.theme-settings')
     @include('frontend.layouts.includes.alert')
 
     <!-- Vendor js -->
     <script src="{{ asset('backend/js/vendor.min.js') }}"></script>
-
     {{-- Sweet alert --}}
     <script src="{{ asset('common/plugins/sweet-alert/sweetalert-2.min.js') }}"></script>
     {{-- Cute alert --}}
@@ -100,14 +84,11 @@
     {{-- Select 2 --}}
     <link src="{{ asset('common/plugins/select2/css/select2.min.css') }}">
     <script src="{{ asset('common/plugins/select2/js/select2.min.js') }}"></script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
         integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
     <script src="{{ asset('common/js/http.js') }}"></script>
     <script src="{{ asset('common/js/custom.js') }}"></script>
-
     <!-- Datatables js -->
     <script src="{{ asset('backend/vendor/datatables.net/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('backend/vendor/datatables.net-bs5/js/dataTables.bootstrap5.min.js') }}"></script>
@@ -115,7 +96,6 @@
     <script src="{{ asset('backend/vendor/daterangepicker/daterangepicker.js') }}"></script>
     <!-- App js -->
     <script src="{{ asset('backend/js/app.min.js') }}"></script>
-
     @stack('scripts')
     <div id="ajax_modal_container"></div>
 </body>

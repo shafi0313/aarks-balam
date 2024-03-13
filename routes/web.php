@@ -22,7 +22,7 @@ Route::post('login/locked', [LockScreenController::class, 'unlock'])->name('logi
 
 Route::controller(AuthController::class)->group(function () {
     Route::get('/sign-in', 'signIn')->name('sign_in');
-    Route::post('/sign-in', 'signInProcess')->name('sign_in');
+    Route::post('/sign-in', 'store')->name('sign_in');
     Route::get('/sign-up', 'signUp')->name('sign_up');
     Route::get('logout', 'logout')->name('logout');
 });

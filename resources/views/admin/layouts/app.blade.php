@@ -98,7 +98,7 @@
     <!-- Theme Settings -->
     @include('admin.layouts.includes.theme-settings')
     @include('admin.layouts.includes.alert')
-
+    @include('sweetalert::alert')
     <!-- Vendor js -->
     <script src="{{ asset('backend/js/vendor.min.js') }}"></script>
 
