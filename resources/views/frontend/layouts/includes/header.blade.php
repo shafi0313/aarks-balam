@@ -50,7 +50,7 @@
             </div>
         </div>
 
-        <ul class="topbar-menu d-flex align-items-center gap-3">
+        <ul class="topbar-menu d-flex align-items-center gap-2">
             <li class="d-none d-md-inline-block me-md-2">
                 <div id="cartMenu">
                     <a href="JavaScript:void(0)" class="btn btn-primary position-relative pr-cart">

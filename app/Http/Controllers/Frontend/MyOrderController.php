@@ -13,8 +13,8 @@ class MyOrderController extends Controller
     public function index()
     {
         $orders = Order::select('id', 'user_id', 'invoice_no', 'total_price', 'order_date', 'status', 'updated_at')->with([
-            'orderItems'      => fn ($q) => $q->select('id', 'order_id', 'product_id', 'quantity', 'price'),
-            'orderItems.product'      => fn ($q) => $q->select('id', 'name'),
+            'orderItems'         => fn ($q) => $q->select('id', 'order_id', 'product_id', 'quantity', 'price'),
+            'orderItems.product' => fn ($q) => $q->select('id', 'name'),
         ])->where('user_id', user()->id)
             ->latest()
             ->get();
