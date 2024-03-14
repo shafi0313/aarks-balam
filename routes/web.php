@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\AuthController;
 use App\Http\Controllers\Frontend\PageController;
 use App\Http\Controllers\Admin\LockScreenController;
+use App\Http\Controllers\Frontend\MyOrderController;
+use App\Http\Controllers\Frontend\MyProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,4 +37,12 @@ Route::controller(PageController::class)->group(function () {
     Route::get('/product-by-sub-category/{sub_cat_id}', 'productBySubCategory')->name('product_by_sub_category');
     Route::get('/product-show/{id}', 'productShow')->name('product_show');
     // Route::get('contact', 'contact')->name('frontend.contact');
+});
+
+Route::get('/my-profile', [MyProfileController::class, 'index'])->name('my_profile.index');
+Route::post('/my-profile/{user}', [MyProfileController::class, 'update'])->name('my_profile.update');
+
+Route::controller(MyOrderController::class)->prefix('/my-order')->name('my_order.')->group(function(){
+    Route::get('/', 'index')->name('index');
+    Route::get('/cancel/{order}', 'cancel')->name('cancel');
 });
