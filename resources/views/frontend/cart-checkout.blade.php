@@ -1,103 +1,83 @@
 @extends('frontend.layouts.app')
 @section('content')
-    @include('frontend.layouts.includes.banner', ['bannerTitle' => 'Cart Checkout ', 'page' => ''])
+    <style>
+        .checkout-side ul {
+            list-style: none
+        }
 
-
+        .cart_table tr td {
+            text-align: right;
+        }
+    </style>
     <!-- Start Product Area -->
-    <section class="gap">
+    <section class="gap mt-3">
         <div class="container">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <form action="{{ route('frontend.shipping.confirm') }}" method="post" class="checkout-meta donate-page">
                 @csrf
+                <input type="hidden" name="total_price" value="{{ $priceWithDiscount }}">
+                <input type="hidden" name="discount" value="{{ $discount }}">
+                <input type="hidden" name="shipping_charge" value="60">
                 <div class="row">
-                    <div class="col-lg-8">
-                        <h3 class="pb-3">Billing details</h3>
-                        <div class="col-lg-12">
-                            <input type="text" class="input-text " name="name" placeholder="Name" value="{{ user()->name }}" required>
-                            <input type="email" class="input-text " name="email" placeholder="Email address" value="{{ user()->email }}" required >
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <select name="delivery_area_id" class="nice-select Advice city" required>
-                                        <option selected value disabled>Select Delivery Area</option>
-                                        @foreach ($deliveryAreas as $deliveryArea)
-                                        <option value="{{ $deliveryArea->id }}" {{ $deliveryArea->id == user()->delivery_area_id ?'selected':'' }}>{{ $deliveryArea->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="col-lg-6">
-                                    <input type="tel" class="input-text " name="phone" placeholder="Phone" value="{{ user()->phone }}" required>
-                                </div>
-                            </div>
-                            <input type="text" name="address" placeholder="Address" value="{{ user()->address }}" required>
-                            {{-- <div class="ship-address">
-                                <div class="d-flex">
-                                    <input type="radio" id="Create" name="Create" value="Create">
-                                    <label for="Create">
-                                        Create an account for later use
-                                    </label>
-                                </div>
-                                <div class="d-flex">
-                                    <input type="radio" id="ShipAddress" name="Create" value="ShipAddress">
-                                    <label for="ShipAddress">
-                                        Ship to same Address
-                                    </label>
-                                </div>
-                            </div> --}}
+                    <div class="col-lg-6">
+                        <h3 class="pb-1">Billing details</h3>
+                        <div class="mb-2">
+                            <x-form-input name="name" value="{{ user()->name }}" label="name" required />
                         </div>
-                        <div class="woocommerce-additional-fields">
-                            <textarea name="note" class="input-text " placeholder="Order Note"></textarea>
+                        <div class="mb-2">
+                            <x-form-input type="email" name="email" value="{{ user()->email }}" label="Email"
+                                required />
+                        </div>
+                        <div class="mb-2">
+                            <x-form-input name="phone" value="{{ old('phone') ?? user()->phone }}" label="Phone"
+                                required />
+                        </div>
+                        <div class="mb-2">
+                            <x-form-input name="address" value="{{ old('address') ?? user()->address }}" label="Address"
+                                required />
+                        </div>
+                        <div class="mb-2">
+                            <x-form-textarea name="note" label="Order Note" />
                         </div>
                     </div>
-                    <div class="col-lg-4">
-                        <div class="cart_totals-checkout"
-                            style="background-image: url({{ asset('frontend/img/patron.jpg') }})">
-                            <div class="cart_totals cart-Total">
-                                <h4>Cart Total</h4>
-                                <table class="shop_table_responsive">
-                                    <tbody>
-                                        <tr class="cart-subtotal">
-                                            <th>Subtotal:</th>
-                                            <td>
-                                                <span class="woocommerce-Price-amount">
-                                                    <bdi>
-                                                        <span class="woocommerce-Price-currencySymbol">&#2547;</span>
-                                                        {{ number_format($priceWithDiscount, 2) }}
-                                                    </bdi>
-                                                </span>
-                                            </td>
-                                        </tr>
-                                        <tr class="Shipping">
-                                            <th>Discount:</th>
-                                            <td>
-                                                <span class="woocommerce-Price-amount amount">
-                                                    &#2547;
-                                                </span>{{ number_format($discount, 2) }}
-                                            </td>
-                                        </tr>
-                                        <tr class="Shipping">
-                                            <th>Shipping:</th>
-                                            <td>
-                                                <span class="woocommerce-Price-amount amount">
-                                                    &#2547;
-                                                </span>60
-                                            </td>
-                                        </tr>
-                                        <tr class="Total">
-                                            <th>Total:</th>
-                                            <td>
-                                                <span class="woocommerce-Price-amount">
-                                                    <bdi>
-                                                        <span>&#2547;</span>{{ number_format($priceWithoutDiscount + 60, 2) }}
-                                                    </bdi>
-                                                </span>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="checkout-side">
-                                <h3>Payment Method</h3>
-                                <ul>
-                                    {{-- <li>
+                    <div class="col-lg-6 ps-3">
+                        <h3 class="pb-1">Cart Total</h3>
+                        <div class="table-responsive">
+                            <table class="table table-striped cart_table">
+                                <tbody>
+                                    <tr class="cart-subtotal">
+                                        <th>Subtotal:</th>
+                                        <td>
+                                            &#2547; {{ number_format($priceWithDiscount, 2) }}
+                                        </td>
+                                    </tr>
+                                    <tr class="Shipping">
+                                        <th>Discount:</th>
+                                        <td>&#2547; {{ number_format($discount, 2) }}</td>
+                                    </tr>
+                                    <tr class="Shipping">
+                                        <th>Shipping:</th>
+                                        <td>&#2547; 60</td>
+                                    </tr>
+                                    <tr class="Total">
+                                        <th>Total:</th>
+                                        <td>&#2547;</span>{{ number_format($priceWithoutDiscount + 60, 2) }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="checkout-side">
+                            <h3>Payment Method</h3>
+                            <ul>
+                                {{-- <li>
                                       <input type="radio" id="Bank_Payment" name="Bank_Payment" value="Bank_Payment">
                                       <label for="Bank_Payment">
                                               Bank Payment
@@ -115,21 +95,23 @@
                                               PayPal
                                       </label>
                                   </li> --}}
-                                    <li>
-                                        <input type="radio" id="Cash on Delivery" name="Bank_Payment" checked
-                                            value="Check_Payment">
-                                        <label for="Cash on Delivery">
-                                            Cash on Delivery
-                                        </label>
-                                    </li>
-                                </ul>
-                                <button type="submit" class="button"><span>Place Order</span></button>
-                            </div>
+                                <li>
+                                    <input type="radio" id="Cash on Delivery" name="Bank_Payment" checked
+                                        value="Check_Payment">
+                                    <label for="Cash on Delivery">
+                                        Cash on Delivery
+                                    </label>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <button type="submit" class="btn btn-primary"><span>Place Order</span></button>
+                    </div>
+                </div>
             </form>
-        </div>
     </section>
     <!-- End Product Area -->
 

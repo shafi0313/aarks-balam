@@ -1,18 +1,27 @@
 @extends('frontend.layouts.app')
 @section('content')
     <style>
-        .shop_table td {
+        #cartTable td {
             vertical-align: middle;
             text-align: center;
         }
+
+        #cartTable th {
+            color: #fff;
+        }
+
+        .cart_table tr td {
+            text-align: right;
+        }
     </style>
-    <section class="gap">
+    <section class="pt-5">
         <div class="container">
-            <form action="{{ route('frontend.shipping.multipleStore') }}" method="post" class="woocommerce-cart-form">
+            <form action="{{ route('frontend.shipping.multipleStore') }}" method="post">
                 @csrf
                 <div class="table-responsive" style="overflow-x:auto;overflow-y: hidden;">
-                    <table id="cartTable" class="table table-bordered shop_table">
-                        <thead>
+                    <h3>List of products</h3>
+                    <table id="cartTable" class="table table-bordered">
+                        <thead class="bg-primary">
                             <tr class="text-center">
                                 <th class="product-name">product</th>
                                 <th class="product-quantity">Quantity</th>
@@ -30,7 +39,6 @@
                                             src="{{ imagePath('product', $cart->product->image) }}" height="80px">
                                         <div>
                                             <a href="#">{{ $cart->product->name }}</a>
-                                            {{-- <span>Sausage, three rashers of streaky bacon</span> --}}
                                         </div>
                                     </td>
                                     <td class="product-quantity" style="max-width: 100px">
@@ -84,8 +92,8 @@
                         </tfoot>
                     </table>
                 </div>
-                <div class="row mt-5">
-                    <div class="col-lg-4">
+                <div class="row">
+                    <div class="col-lg-6">
                         {{-- <div class="coupon-area">
                             <h3>Apply Coupon</h3>
                             <div class="coupon">
@@ -95,48 +103,27 @@
                             </div>
                         </div> --}}
                     </div>
-                    <div class="col-lg-8">
-                        <div class="cart_totals">
-                            <h4>Cart Totals</h4>
-                            <div class="shop_table-boder">
-                                <table class="shop_table_responsive">
-                                    <tbody>
-                                        <tr class="cart-subtotal">
-                                            <th>Sub total:</th>
-                                            <td>
-                                                <span class="woocommerce-Price-amount">
-                                                    <bdi>
-                                                        &#2547; <span id="total" class="total">0</span>
-                                                    </bdi>
-                                                </span>
-                                            </td>
-                                        </tr>
-                                        <tr class="Shipping">
-                                            <th>Shipping:</th>
-                                            <td>
-                                                <span class="woocommerce-Price-amount">
-                                                    &#2547; 60
-                                                </span>
-                                            </td>
-                                        </tr>
-                                        <tr class="Total">
-                                            <th>Total:</th>
-                                            <td>
-                                                <span class="woocommerce-Price-amount">
-                                                    <bdi>
-                                                        &#2547; <span class="totalPay"></span>
-                                                    </bdi>
-                                                </span>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="wc-proceed-to-checkout">
-                                <button type="submit" class="button">Proceed to checkout</button>
-                                {{-- <a href="#" class="button">
-                                    <span>Proceed to checkout</span>
-                                </a> --}}
+                    <div class="col-lg-6">
+                        <h4>Cart Totals</h4>
+                        <div class="table-responsive">
+                            <table class="table table-striped cart_table">
+                                <tbody>
+                                    <tr class="cart-subtotal">
+                                        <th>Sub total:</th>
+                                        <td>&#2547; <span id="total" class="total">0</span></td>
+                                    </tr>
+                                    <tr class="Shipping">
+                                        <th>Shipping:</th>
+                                        <td>&#2547; 60</td>
+                                    </tr>
+                                    <tr class="Total">
+                                        <th>Total:</th>
+                                        <td>&#2547; <span class="totalPay"></span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-success">Proceed to checkout</button>
                             </div>
                         </div>
                     </div>

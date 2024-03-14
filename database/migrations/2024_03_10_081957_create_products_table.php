@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('sub_category_id')->nullable()->constrained()->cascadeOnDelete();
             $table->string('name');
             $table->decimal('price', 10, 2)->nullable();
+            $table->float('discount')->nullable();
             $table->string('image')->nullable();
             $table->text('content')->nullable();
             $table->boolean('is_active')->default(1);

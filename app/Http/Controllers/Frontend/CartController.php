@@ -28,12 +28,11 @@ class CartController extends Controller
                     'user_id' => user()->id],
                 [
                     'product_id' => $request->product_id,
-                    'user_id' => user()->id,
-                    'quantity' => 1,
+                    'user_id'    => user()->id,
+                    'quantity'   => 1,
                 ]);
             return response()->json(['message'=> 'Added to add to cart'], 200);
         } catch (\Exception $e) {
-            // return response()->json(['message'=>__('app.oops')], 500);
             return response()->json(['message'=>$e->getMessage()], 500);
         }
     }
@@ -44,7 +43,6 @@ class CartController extends Controller
             Cart::find($request->cart_id)->update(['quantity' =>$increment]);
             return response()->json(['message'=> 'Incremented'], 200);
         } catch (\Exception $e) {
-            // return response()->json(['message'=>__('app.oops')], 500);
             return response()->json(['message'=>$e->getMessage()], 500);
         }
     }
@@ -58,7 +56,6 @@ class CartController extends Controller
             Cart::find($request->cart_id)->update(['quantity' => $increment - 1]);
             return response()->json(['message'=> 'Decremented'], 200);
         } catch (\Exception $e) {
-            // return response()->json(['message'=>__('app.oops')], 500);
             return response()->json(['message'=>$e->getMessage()], 500);
         }
     }
@@ -83,7 +80,6 @@ class CartController extends Controller
             Cart::find($request->id)->delete();
             return response()->json(['message'=> 'Remove from add to cart'], 200);
         } catch (\Exception $e) {
-            // return response()->json(['message'=>__('app.oops')], 500);
             return response()->json(['message'=>$e->getMessage()], 500);
         }
     }
@@ -93,13 +89,9 @@ class CartController extends Controller
         try {
             Cart::find($id)->delete();
             Alert::success('Success','Cart deleted successfully');
-            return back();
         } catch (\Exception $e) {
-            return back();
             Alert::success('Success','Cart delete failed');
-            return back();
-            // return response()->json(['message'=>__('app.oops')], 500);
-            // return response()->json(['message'=>$e->getMessage()], 500);
         }
+        return back();
     }
 }
