@@ -130,13 +130,13 @@
 
 
             <li class="side-nav-item">
-                <a href="" class="side-nav-link">
+                <a href="{{ route('admin.order_manages.index') }}" class="side-nav-link">
                     <i class="ri-calendar-2-fill"></i>
-                    <span> Calendar </span>
+                    <span> Order List </span>
                 </a>
             </li>
 
-            <li class="side-nav-item">
+            {{-- <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false" aria-controls="sidebarEmail"
                     class="side-nav-link">
                     <i class="ri-mail-fill"></i>
@@ -216,12 +216,9 @@
                         </li>
                     </ul>
                 </div>
-            </li>
-
-
+            </li> --}}
         </ul>
         <!--- End Sidemenu -->
-
         <div class="clearfix"></div>
     </div>
 </div>

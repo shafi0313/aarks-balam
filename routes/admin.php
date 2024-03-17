@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\AdminUserController;
+use App\Http\Controllers\Admin\OrderManageController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Setting\AppDbBackupController;
 use App\Http\Controllers\Setting\Permission\RoleController;
@@ -50,3 +51,11 @@ Route::patch('/sub-categories/is-active/{category}', [SubCategoryController::cla
 Route::resource('/products', ProductController::class)->except(['create','show']);
 Route::patch('/products/is-active/{product}', [ProductController::class, 'status'])->name('products.is_active');
 Route::get('/get-sub-categories', [ProductController::class, 'getSubCategory'])->name('products.sub_categories');
+
+Route::controller(OrderManageController::class)->name('order_manages.')->group(function(){
+    Route::get('/order', 'index')->name('index');
+    Route::get('/order/edit/{id}', 'edit')->name('edit');
+    Route::get('/accept/{orderId}', 'accept')->name('accept');
+    Route::get('/reject/{orderId}', 'reject')->name('reject');
+    
+});
