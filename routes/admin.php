@@ -5,6 +5,7 @@ use App\Http\Controllers\MyProfileController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ReceivedController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\OrderManageController;
 use App\Http\Controllers\Admin\SubCategoryController;
@@ -57,5 +58,11 @@ Route::controller(OrderManageController::class)->name('order_manages.')->group(f
     Route::get('/order/edit/{id}', 'edit')->name('edit');
     Route::get('/accept/{orderId}', 'accept')->name('accept');
     Route::get('/reject/{orderId}', 'reject')->name('reject');
-    
+
+});
+
+Route::prefix('accounts')->name('accounts.')->group(function(){
+    Route::controller(ReceivedController::class)->prefix('receives')->name('receives.')->group(function(){
+        Route::get('/received/{orderId}', 'receive')->name('receives');
+    });
 });

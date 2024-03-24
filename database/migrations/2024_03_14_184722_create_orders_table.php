@@ -19,6 +19,7 @@ return new class extends Migration
             $table->decimal('total_price', 12, 2);
             $table->float('discount')->nullable();
             $table->float('shipping_charge')->nullable();
+            $table->float('pay_amount')->nullable();
             $table->date('delivery_date')->nullable();
             $table->tinyInteger('status')->default(1);
             $table->text('note')->nullable();

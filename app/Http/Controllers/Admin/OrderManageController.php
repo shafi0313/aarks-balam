@@ -62,6 +62,11 @@ class OrderManageController extends Controller
                     $btn .= '<span data-route="' . route('admin.order_manages.reject', $row->id) . '" data-value="' . $row->id . '" class="reject icon-btn me-2" title="Reject">
                                 <i class="fa-regular fa-circle-xmark text-danger"></i>
                             </span>';
+                    if (!$row->pay_amount) {
+                        $btn .= '<a href="' . route('admin.accounts.receives.receives', $row->id) . '" title="Receive/Payment" class="icon-btn me-2 text-primary">
+                                        <i class="fa-solid fa-hand-holding-dollar"></i>
+                                    </a>';
+                    }
 
                     return $btn;
                 })
