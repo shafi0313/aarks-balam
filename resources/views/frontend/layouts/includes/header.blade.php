@@ -70,7 +70,6 @@
                         </span>
                         <span class="d-lg-flex flex-column gap-1 d-none">
                             <h5 class="my-0">{{ user()->name }}</h5>
-                            {{-- <h6 class="my-0 fw-normal">Founder</h6> --}}
                         </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated profile-dropdown">
@@ -90,9 +89,6 @@
                 </li>
             @endauth
             <li class="d-none d-md-inline-block me-md-2">
-                {{-- @auth
-                    <a class="nav-link" href="{{ route('sign_out') }}">Sing Out</a>
-                @endauth --}}
                 @guest
                     <a class="nav-link" href="{{ route('sign_in') }}">Sing In</a>
                 @endguest
@@ -104,4 +100,13 @@
             </li>
         </ul>
     </div>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 </div>
